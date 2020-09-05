@@ -33,3 +33,56 @@ function displayName() {
 }
 
 displayName();
+
+
+/* ---------------------------------------------------------------------- */
+
+function Student(name) {
+  this.name = name;
+  console.log(this);
+  // this prints as below - here `this` refers to the Student object
+  // Student {name: "Megharaj"}
+}
+
+const student = new Student('Megharaj'); // Creates empty object {} first
+
+/* ---------------------------------------------------------------------- */
+
+const student1 = {
+  name: 'John Doe',
+  courses: ['computers', 'maths', 'english'],
+
+  displayCourses() {
+    this.courses.forEach(function(cource) {
+      console.log(this.name, course);
+      // this prints as below - here `this` refers to the anonymous function which is Window object
+      // undefined "computers"
+      // undefined "maths"
+      // undefined "english"
+      console.log(this, course); // this refers to Window object
+    });
+  }
+}
+
+student1.displayCourses();
+// To reference the student object, the callback function has one more argument which we can reference to
+// respective object as mentioned in the below solution
+/* ---------------------------------------------------------------------- */
+
+const student2 = {
+  name: 'John Doe',
+  courses: ['computers', 'maths', 'english'],
+
+  displayCourses() {
+    this.courses.forEach(function(cource) {
+      console.log(this.name, course);
+      // this prints as below - here `this` refers to the student2 object
+      // undefined "computers"
+      // undefined "maths"
+      // undefined "english"
+      console.log(this, course); // this refers to student2 object
+    }, this);
+  }
+}
+
+student2.displayCourses();
