@@ -77,9 +77,9 @@ const student2 = {
     this.courses.forEach(function(cource) {
       console.log(this.name, course);
       // this prints as below - here `this` refers to the student2 object
-      // undefined "computers"
-      // undefined "maths"
-      // undefined "english"
+      // "John Doe" "computers"
+      // "John Doe"  "maths"
+      // "John Doe"  "english"
       console.log(this, course); // this refers to student2 object
     }, this);
   }
