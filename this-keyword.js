@@ -9,13 +9,20 @@ const employee = {
 
   getFullname() {
     console.log(this); 
-    // this prints as below - here this refers to the employee object
+    // prints as below - here `this` refers to the employee object
     // {firstname: "John", lastname: "Doe", getFullname: f}
     return `${this.firstname} ${this.lastname}`;
   }
 }
 
 employee.getFullname();
+
+employee.display = function() {
+  console.log(this); 
+  // this prints as below - here `this` refers to the employee object
+  // {firstname: "John", lastname: "Doe", getFullname: f, display: f}
+}
+employee.display();
 
 /* ---------------------------------------------------------------------- */
 
