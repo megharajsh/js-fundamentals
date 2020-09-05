@@ -26,4 +26,10 @@ employee.display();
 
 /* ---------------------------------------------------------------------- */
 
+function displayName() {
+  console.log(this);
+  // this prints as below - here `this` refers to the Window object
+  // Window {postMessage: f, ......}
+}
 
+displayName();
