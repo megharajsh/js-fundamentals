@@ -8,7 +8,9 @@ const employee = {
   lastname: 'Doe',
 
   getFullname() {
-    console.log(this);
+    console.log(this); 
+    // this prints 
+    // {firstname: "John", lastname: "Doe", getFullname: f}
     return `${this.firstname} ${this.lastname}`;
   }
 }
