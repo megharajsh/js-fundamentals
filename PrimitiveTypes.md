@@ -59,9 +59,27 @@ myCatAge === myCatAge;              //  false   OOPS! - NaN is the only value no
 
 isNaN(myAge);                       //  false
 isNaN(myCatAge);                    //  true
-isNaN("My son's age");              //  true    OOPS  - "My son's age" coerces to NaN before the check, then it checks with NaN returns the boolean
+isNaN("My son's age");              //  true    OOPS  - "My son's age" coerces to NaN before the check
 
 ES6 Implementation
 Number.isNaN(myCatAge);             // true - It does not do coercion to NaN
+Number.isNaN("My son's age");       // false - NaN is the only value not equal to itself
+
+```
+
+
+## Special Values - Negative Zero
+```sh
+var trendRate = -0;
+trendRate === -0;           //  true
+
+trendRate.toString();       //  "0" OOPS!
+trendRate === 0;            //  true OOPS!
+trendRate < 0;              //  false
+trendRate > 0;              //  false
+
+ES6 Implementation
+Object.is(trendRate, -0);   //  true
+Object.is(trendRate, 0);    //  false
 
 ```
