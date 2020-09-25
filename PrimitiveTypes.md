@@ -1,6 +1,6 @@
 # JavaScript Primitive Types
 
-- nndefined
+- undefined
 - null
 - boolean
 - number
@@ -14,7 +14,7 @@
 - array
 
 ## typeof Operator
-```sh
+```js
 var v;
 typeof v;     // "undefined"
 
@@ -43,13 +43,13 @@ v = [1,2,3];
 typeof v;     // "object" 
 
 // Coming Soon!
-v = 42n; // or BigInt(42)
+v = 42n;      // or BigInt(42)
 typeof v;     // "bigint"
 
 ```
 
 ## Special Values - NaN ("not a number")
-```sh
+```js
 var myAge = Number("0o46");         //  38
 var myNextAge = Number("39");       //  39
 var myCatAge  = Number("n/a");      //  NaN
@@ -69,7 +69,7 @@ Number.isNaN("My son's age");       // false - NaN is the only value not equal t
 
 
 ## Special Values - Negative Zero
-```sh
+```js
 var trendRate = -0;
 trendRate === -0;           //  true
 
@@ -82,4 +82,30 @@ ES6 Implementation
 Object.is(trendRate, -0);   //  true
 Object.is(trendRate, 0);    //  false
 
+```
+
+### Polyfill for `Object.is(..)`
+```js
+if (!Object.is) {
+  Object.is = function ObjectIs(x, y) {
+    var xNegZero = isItNegZero(x);
+    var yNegZero = isItNegZero(y);
+    
+    if (xNegZero || yNegZero) {
+      return xNegZero && yNegZero;
+    } else if (isItNaN(x) && isItNaN(y)) {
+      return true;
+    } else {
+      return x === y;
+    }
+    
+    function isItNegZero(v) {
+      return v == 0 && (1/v) == -Infinity;
+    }
+    
+    function isItNaN(v) {
+      return v !== v
+    }
+  };
+}
 ```
